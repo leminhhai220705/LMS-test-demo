@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Learning — LMS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <div class="header-inner">
+        <h1 class="brand">My Learning</h1>
+        <span class="user-badge hidden" id="user-badge"></span>
+      </div>
+    </header>
+    <main class="main">
+      <!-- Screen 1: Onboarding -->
+      <div id="onboarding" class="onboarding">
+        <div class="onboarding-card">
+          <h2 class="onboarding-title">Discover Your Learning Path</h2>
+          <p class="onboarding-sub">Answer a few questions so we can personalize your experience.</p>
+          <form id="onboarding-form" class="onboarding-form">
+            <div class="form-group">
+              <label for="goal">What is your main goal?</label>
+              <select id="goal" name="goal" required>
+                <option value="">— Select your goal —</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="skillLevel">What is your current skill level?</label>
+              <select id="skillLevel" name="skillLevel" required>
+                <option value="">— Select your level —</option>
+                <option value="Beginner">Beginner</option>
+                <option value="Intermediate">Intermediate</option>
+                <option value="Advanced">Advanced</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="preferredFormat">How do you prefer to learn?</label>
+              <select id="preferredFormat" name="preferredFormat" required>
+                <option value="">— Select format —</option>
+                <option value="Video">Video</option>
+                <option value="Reading">Reading</option>
+                <option value="Quiz">Quiz</option>
+              </select>
+            </div>
+            <button type="submit" class="btn-discover" id="btn-discover">Discover My Path</button>
+          </form>
+        </div>
+      </div>
+      <!-- Screen 2: Dashboard -->
+      <div id="dashboard" class="dashboard hidden">
+        <section class="hero">
+          <h2 class="hero-title">Based on your goals, here is your AI-optimized Learning Path!</h2>
+          <p class="hero-sub" id="hero-profile"></p>
+        </section>
+        <section class="dqn-section">
+          <div class="dqn-banner">
+            <span class="dqn-label">AI Learning Path Assistant</span>
+            <p class="dqn-message" id="dqn-message"></p>
+          </div>
+        </section>
+        <section class="completed-section">
+          <h3 class="section-title">Your completed courses</h3>
+          <div id="completed-list" class="completed-list"></div>
+          <p id="completed-none" class="muted hidden">No completed courses yet. Complete a recommended course below!</p>
+        </section>
+        <section class="catalog-section">
+          <h3 class="section-title">Recommended for you</h3>
+          <p class="section-desc">Hybrid AI — personalized to your interests</p>
+          <div id="recommendations-grid" class="recommendations-grid"></div>
+          <p id="recs-none" class="muted hidden">No recommendations available.</p>
+        </section>
+      </div>
+      <div id="loading-state" class="loading-state hidden">
+        <div class="spinner"></div>
+        <p>Building your learning path…</p>
+      </div>
+      <div id="error-state" class="error-state hidden">
+        <p id="error-message"></p>
+      </div>
+    </main>
+  </div>
+  <script src="js/config.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

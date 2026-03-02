@@ -1,0 +1,7 @@
+# Không cho phép đẩy các thư mục thư viện nặng lên GitHub
+ai_service/venv/
+ai_service/__pycache__/
+backend/node_modules/
+frontend/node_modules/
+.DS_Store
+.env
