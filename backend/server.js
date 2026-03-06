@@ -22,7 +22,7 @@ app.use(
     origin: FRONTEND_URL || "*",
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
-  })
+  }),
 );
 app.use(express.json());
 
@@ -33,6 +33,32 @@ function getUser(uid) {
 // Serve frontend static files (from ../frontend when running from backend/)
 const frontendPath = path.join(__dirname, "..", "frontend");
 app.use(express.static(frontendPath));
+
+// --- API routes ---
+
+// --- MÔ PHỎNG MONGODB SHARDING ARCHITECTURE ---
+// Giả lập hệ thống có 3 Server (Shards) độc lập
+const shard_0 = []; // Chứa data của User có ID chia hết cho 3
+const shard_1 = []; // Chứa data của User có ID chia cho 3 dư 1
+const shard_2 = []; // Chứa data của User có ID chia cho 3 dư 2
+
+// Hàm giả lập bộ định tuyến "mongos" của MongoDB
+// Shard Key ở đây chính là: user_id
+function routeToShard(userId, interactionData) {
+  const shardKey = userId % 3; // Thuật toán Hashed Sharding đơn giản
+
+  if (shardKey === 0) {
+    shard_0.push(interactionData);
+    console.log(`[MongoDB Router] Data of User ${userId} routed to SHARD_0`);
+  } else if (shardKey === 1) {
+    shard_1.push(interactionData);
+    console.log(`[MongoDB Router] Data of User ${userId} routed to SHARD_1`);
+  } else {
+    shard_2.push(interactionData);
+    console.log(`[MongoDB Router] Data of User ${userId} routed to SHARD_2`);
+  }
+}
+// ----------------------------------------------
 
 // --- API routes ---
 
@@ -57,7 +83,9 @@ app.get("/api/onboarding-options", (req, res) => {
 app.post("/api/onboard", async (req, res) => {
   const { category, difficulty, format } = req.body;
   if (!category || !difficulty || !format) {
-    return res.status(400).json({ error: "category, difficulty, and format required" });
+    return res
+      .status(400)
+      .json({ error: "category, difficulty, and format required" });
   }
 
   const profile = `Goal: ${category} · Level: ${difficulty} · Prefers: ${format}`;
@@ -70,13 +98,17 @@ app.post("/api/onboard", async (req, res) => {
   onboardedUsers.set(NEW_STUDENT_ID, newUser);
 
   let recommendations = [];
-  let dqn_suggestion = { format: null, difficulty: null, message: "AI service unavailable." };
+  let dqn_suggestion = {
+    format: null,
+    difficulty: null,
+    message: "AI service unavailable.",
+  };
 
   try {
     const { data } = await axios.post(
       `${AI_SERVICE_URL}/api/recommendations/onboarding`,
       { category, difficulty, format },
-      { timeout: 15000 }
+      { timeout: 15000 },
     );
     recommendations = data.recommendations || [];
     dqn_suggestion = data.dqn_suggestion || dqn_suggestion;
@@ -96,6 +128,8 @@ app.post("/api/onboard", async (req, res) => {
  * Simulate completing a course. Pushes new interaction to in-memory db,
  * fetches fresh AI recommendations from Python, returns updated dashboard.
  */
+
+// Built an LRS (Learning Record Store) endpoint to capture real-time user micro-interactions using the xAPI standard
 app.post("/api/interact", async (req, res) => {
   const { userId, courseId, rating, status } = req.body;
   if (userId == null || courseId == null) {
@@ -120,6 +154,9 @@ app.post("/api/interact", async (req, res) => {
   };
   interactions.push(newInteraction);
 
+  // Gọi hàm giả lập Sharding để log ra Terminal cho Thầy xem
+  routeToShard(uid, newInteraction);
+
   const coursesById = Object.fromEntries(courses.map((c) => [c.id, c]));
   const userInteractions = interactions
     .filter((i) => i.userId === uid)
@@ -138,13 +175,17 @@ app.post("/api/interact", async (req, res) => {
     }));
 
   let recommendations = [];
-  let dqn_suggestion = { format: null, difficulty: null, message: "AI service unavailable." };
+  let dqn_suggestion = {
+    format: null,
+    difficulty: null,
+    message: "AI service unavailable.",
+  };
 
   try {
     const { data } = await axios.post(
       `${AI_SERVICE_URL}/api/recommendations`,
       { user_id: uid, courses, users, interactions },
-      { timeout: 30000 }
+      { timeout: 30000 },
     );
     recommendations = data.recommendations || [];
     dqn_suggestion = data.dqn_suggestion || dqn_suggestion;
@@ -198,20 +239,24 @@ app.get("/api/user-dashboard/:userId", async (req, res) => {
     }));
 
   let recommendations = [];
-  let dqn_suggestion = { format: null, difficulty: null, message: "AI service unavailable." };
+  let dqn_suggestion = {
+    format: null,
+    difficulty: null,
+    message: "AI service unavailable.",
+  };
 
   try {
     const allUsers = [...users, ...Array.from(onboardedUsers.values())];
-    const { data } = userId === NEW_STUDENT_ID
-      ? await axios.post(
-          `${AI_SERVICE_URL}/api/recommendations`,
-          { user_id: userId, courses, users: allUsers, interactions },
-          { timeout: 30000 }
-        )
-      : await axios.get(
-          `${AI_SERVICE_URL}/api/recommendations/${userId}`,
-          { timeout: 15000 }
-        );
+    const { data } =
+      userId === NEW_STUDENT_ID
+        ? await axios.post(
+            `${AI_SERVICE_URL}/api/recommendations`,
+            { user_id: userId, courses, users: allUsers, interactions },
+            { timeout: 30000 },
+          )
+        : await axios.get(`${AI_SERVICE_URL}/api/recommendations/${userId}`, {
+            timeout: 15000,
+          });
     recommendations = data.recommendations || [];
     dqn_suggestion = data.dqn_suggestion || dqn_suggestion;
   } catch (err) {
@@ -232,7 +277,8 @@ app.get("/api/user-dashboard/:userId", async (req, res) => {
 
 // SPA fallback: serve index.html for non-API routes
 app.get("*", (req, res) => {
-  if (req.path.startsWith("/api/")) return res.status(404).json({ error: "Not found" });
+  if (req.path.startsWith("/api/"))
+    return res.status(404).json({ error: "Not found" });
   res.sendFile(path.join(frontendPath, "index.html"));
 });
 
