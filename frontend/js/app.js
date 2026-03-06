@@ -49,8 +49,13 @@ async function loadOnboardingOptions() {
     if (!res.ok) throw new Error("Failed to load options");
     const { categories } = await res.json();
     const goalSelect = $("#goal");
-    goalSelect.innerHTML = '<option value="">— Select your goal —</option>' +
-      categories.map((c) => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join("");
+    goalSelect.innerHTML =
+      '<option value="">— Select your goal —</option>' +
+      categories
+        .map(
+          (c) => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`,
+        )
+        .join("");
   } catch (e) {
     const goalSelect = $("#goal");
     goalSelect.innerHTML =
@@ -148,7 +153,9 @@ async function submitOnboarding(e) {
     applyDashboardData(data);
     showView(dashboardEl);
   } catch (e) {
-    setError(e.message || "Failed to discover your path. Is the backend running?");
+    setError(
+      e.message || "Failed to discover your path. Is the backend running?",
+    );
   } finally {
     btnDiscover.disabled = false;
   }
@@ -167,7 +174,7 @@ async function simulateComplete(courseId, btn) {
       body: JSON.stringify({
         userId: STUDENT_ID,
         courseId,
-        rating: 5,
+        rating: Math.floor(Math.random() * 3) + 3,
         status: "completed",
       }),
     });
