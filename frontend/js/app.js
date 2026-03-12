@@ -24,6 +24,26 @@ const recsNone = $("#recs-none");
 const onboardingForm = $("#onboarding-form");
 const btnDiscover = $("#btn-discover");
 
+// ==========================================
+// --- THÊM ĐOẠN NÀY ĐỂ XÓA TRÍ NHỚ TRÌNH DUYỆT ---
+// ==========================================
+function resetUserSession() {
+  // Đảm bảo STUDENT_ID luôn bắt đầu bằng null khi F5
+  STUDENT_ID = null;
+
+  // Hiển thị lại màn hình Onboarding
+  showView(onboarding);
+
+  // (Tùy chọn) Reset lại Form lựa chọn
+  if (onboardingForm) {
+    onboardingForm.reset();
+  }
+}
+
+// Gọi hàm này ngay lập tức khi file JS được load (tức là mỗi khi F5)
+resetUserSession();
+// ==========================================
+
 function showView(view) {
   onboarding.classList.add("hidden");
   dashboardEl.classList.add("hidden");
@@ -51,11 +71,7 @@ async function loadOnboardingOptions() {
     const goalSelect = $("#goal");
     goalSelect.innerHTML =
       '<option value="">— Select your goal —</option>' +
-      categories
-        .map(
-          (c) => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`,
-        )
-        .join("");
+      categories.map((c) => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join("");
   } catch (e) {
     const goalSelect = $("#goal");
     goalSelect.innerHTML =
@@ -153,9 +169,7 @@ async function submitOnboarding(e) {
     applyDashboardData(data);
     showView(dashboardEl);
   } catch (e) {
-    setError(
-      e.message || "Failed to discover your path. Is the backend running?",
-    );
+    setError(e.message || "Failed to discover your path. Is the backend running?");
   } finally {
     btnDiscover.disabled = false;
   }

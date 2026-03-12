@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 5000;
 const AI_SERVICE_URL = process.env.AI_SERVICE_URL || "http://localhost:8000";
 const FRONTEND_URL = process.env.FRONTEND_URL;
 
-const NEW_STUDENT_ID = 999;
+// const NEW_STUDENT_ID = 999;
 const onboardedUsers = new Map();
 
 app.use(
@@ -99,19 +99,22 @@ app.get("/api/onboarding-options", (req, res) => {
 app.post("/api/onboard", async (req, res) => {
   const { category, difficulty, format } = req.body;
   if (!category || !difficulty || !format) {
-    return res
-      .status(400)
-      .json({ error: "category, difficulty, and format required" });
+    return res.status(400).json({ error: "category, difficulty, and format required" });
   }
+
+  // --- SỬA Ở ĐÂY: SINH ID NGẪU NHIÊN THAY VÌ FIX CỨNG 999 ---
+  // Tạo ID ngẫu nhiên từ 1000 đến 9999
+  const dynamicStudentId = Math.floor(Math.random() * 9000) + 1000;
 
   const profile = `Goal: ${category} · Level: ${difficulty} · Prefers: ${format}`;
   const newUser = {
-    id: NEW_STUDENT_ID,
-    name: "New Student",
+    id: dynamicStudentId,
+    name: "New Student" + dynamicStudentId,
     profile,
     preferences: { category, difficulty, format },
   };
-  onboardedUsers.set(NEW_STUDENT_ID, newUser);
+
+  onboardedUsers.set(dynamicStudentId, newUser);
 
   let recommendations = [];
   let dqn_suggestion = {
@@ -263,16 +266,16 @@ app.get("/api/user-dashboard/:userId", async (req, res) => {
 
   try {
     const allUsers = [...users, ...Array.from(onboardedUsers.values())];
-    const { data } =
-      userId === NEW_STUDENT_ID
-        ? await axios.post(
-            `${AI_SERVICE_URL}/api/recommendations`,
-            { user_id: userId, courses, users: allUsers, interactions },
-            { timeout: 30000 },
-          )
-        : await axios.get(`${AI_SERVICE_URL}/api/recommendations/${userId}`, {
-            timeout: 15000,
-          });
+    // --- ĐÃ SỬA: Kiểm tra xem user có nằm trong map onboardedUsers không ---
+    const { data } = onboardedUsers.has(userId)
+      ? await axios.post(
+          `${AI_SERVICE_URL}/api/recommendations`,
+          { user_id: userId, courses, users: allUsers, interactions },
+          { timeout: 30000 },
+        )
+      : await axios.get(`${AI_SERVICE_URL}/api/recommendations/${userId}`, {
+          timeout: 15000,
+        });
     recommendations = data.recommendations || [];
     dqn_suggestion = data.dqn_suggestion || dqn_suggestion;
   } catch (err) {
@@ -293,8 +296,7 @@ app.get("/api/user-dashboard/:userId", async (req, res) => {
 
 // SPA fallback: serve index.html for non-API routes
 app.get("*", (req, res) => {
-  if (req.path.startsWith("/api/"))
-    return res.status(404).json({ error: "Not found" });
+  if (req.path.startsWith("/api/")) return res.status(404).json({ error: "Not found" });
   res.sendFile(path.join(frontendPath, "index.html"));
 });
 
