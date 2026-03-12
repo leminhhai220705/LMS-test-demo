@@ -109,7 +109,7 @@ app.post("/api/onboard", async (req, res) => {
   const profile = `Goal: ${category} · Level: ${difficulty} · Prefers: ${format}`;
   const newUser = {
     id: dynamicStudentId,
-    name: "New Student" + dynamicStudentId,
+    name: "New Student " + dynamicStudentId,
     profile,
     preferences: { category, difficulty, format },
   };
