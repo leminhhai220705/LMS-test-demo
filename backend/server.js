@@ -42,7 +42,7 @@ const shard_0 = []; // Chứa data của User có ID chia hết cho 3
 const shard_1 = []; // Chứa data của User có ID chia cho 3 dư 1
 const shard_2 = []; // Chứa data của User có ID chia cho 3 dư 2
 
-// Hàm giả lập bộ định tuyến "mongos" của MongoDB
+// Phase 1.2 Hàm giả lập bộ định tuyến "mongos" của MongoDB
 // Shard Key ở đây chính là: user_id
 function routeToShard(userId, interactionData) {
   const shardKey = userId % 3; // Thuật toán Hashed Sharding đơn giản
@@ -58,6 +58,22 @@ function routeToShard(userId, interactionData) {
     console.log(`[MongoDB Router] Data of User ${userId} routed to SHARD_2`);
   }
 }
+
+// simulate users access to the system
+/**
+ * // Mô phỏng 10 user khác nhau cùng gửi dữ liệu lên LRS đồng thời
+for (let i = 1; i <= 10; i++) {
+  fetch('https://lms-backend-hf26.onrender.com/api/interact', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      userId: i, 
+      courseId: Math.floor(Math.random() * 50) + 1, // Random khóa học từ 1-50
+      rating: Math.floor(Math.random() * 3) + 3,    // Random điểm 3-5
+      status: 'completed'
+    })
+  }).then(() => console.log(`Đã gửi data cho User ${i}`));
+ */
 // ----------------------------------------------
 
 // --- API routes ---
@@ -129,7 +145,7 @@ app.post("/api/onboard", async (req, res) => {
  * fetches fresh AI recommendations from Python, returns updated dashboard.
  */
 
-// Built an LRS (Learning Record Store) endpoint to capture real-time user micro-interactions using the xAPI standard
+// Phase 1.1 Built an LRS (Learning Record Store) endpoint to capture real-time user micro-interactions using the xAPI standard
 app.post("/api/interact", async (req, res) => {
   const { userId, courseId, rating, status } = req.body;
   if (userId == null || courseId == null) {
