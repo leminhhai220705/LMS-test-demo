@@ -22,9 +22,9 @@ fs.writeFileSync(
       interactions: db.interactions,
     },
     null,
-    2
+    2,
   ),
-  "utf8"
+  "utf8",
 );
 
 console.log(`Exported data to ${outPath}`);

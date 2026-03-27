@@ -8,412 +8,466 @@ const courses = [
   {
     id: 1,
     title: "Python Fundamentals for Beginners",
-    description: "Learn Python programming from scratch. Covers variables, data types, loops, functions, and basic object-oriented programming. Perfect for anyone starting their coding journey. Includes hands-on exercises and real-world project examples.",
+    description:
+      "Learn Python programming from scratch. Covers variables, data types, loops, functions, and basic object-oriented programming. Perfect for anyone starting their coding journey. Includes hands-on exercises and real-world project examples.",
     category: "IT/Coding",
     difficulty: "Beginner",
-    format: "Video"
+    format: "Video",
   },
   {
     id: 2,
     title: "Advanced Python: Design Patterns and Best Practices",
-    description: "Master design patterns, decorators, context managers, and async programming in Python. Build scalable applications and understand SOLID principles. For developers with intermediate Python experience.",
+    description:
+      "Master design patterns, decorators, context managers, and async programming in Python. Build scalable applications and understand SOLID principles. For developers with intermediate Python experience.",
     category: "IT/Coding",
     difficulty: "Advanced",
-    format: "Video"
+    format: "Video",
   },
   {
     id: 3,
     title: "JavaScript and the DOM",
-    description: "Interactive web development with JavaScript. Manipulate the Document Object Model, handle events, and create dynamic user interfaces. Covers ES6+ syntax and modern browser APIs.",
+    description:
+      "Interactive web development with JavaScript. Manipulate the Document Object Model, handle events, and create dynamic user interfaces. Covers ES6+ syntax and modern browser APIs.",
     category: "IT/Coding",
     difficulty: "Beginner",
-    format: "Video"
+    format: "Video",
   },
   {
     id: 4,
     title: "React.js: Building Modern UIs",
-    description: "Build reactive user interfaces with React. Learn components, hooks, state management, and routing. Create single-page applications with a component-based architecture.",
+    description:
+      "Build reactive user interfaces with React. Learn components, hooks, state management, and routing. Create single-page applications with a component-based architecture.",
     category: "IT/Coding",
     difficulty: "Intermediate",
-    format: "Video"
+    format: "Video",
   },
   {
     id: 5,
     title: "SQL and Relational Databases",
-    description: "Query and manage data with SQL. Learn SELECT, JOIN, subqueries, indexing, and database design. Covers PostgreSQL and MySQL. Essential for backend developers and data analysts.",
+    description:
+      "Query and manage data with SQL. Learn SELECT, JOIN, subqueries, indexing, and database design. Covers PostgreSQL and MySQL. Essential for backend developers and data analysts.",
     category: "IT/Coding",
     difficulty: "Beginner",
-    format: "Reading"
+    format: "Reading",
   },
   {
     id: 6,
     title: "RESTful API Design with Node.js",
-    description: "Design and implement REST APIs using Node.js and Express. Authentication, validation, error handling, and documentation with OpenAPI. Best practices for scalable backend services.",
+    description:
+      "Design and implement REST APIs using Node.js and Express. Authentication, validation, error handling, and documentation with OpenAPI. Best practices for scalable backend services.",
     category: "IT/Coding",
     difficulty: "Intermediate",
-    format: "Video"
+    format: "Video",
   },
   {
     id: 7,
     title: "Machine Learning with Python and Scikit-learn",
-    description: "Introduction to machine learning: regression, classification, clustering, and model evaluation. Hands-on with Scikit-learn. Preprocessing, feature engineering, and cross-validation techniques.",
+    description:
+      "Introduction to machine learning: regression, classification, clustering, and model evaluation. Hands-on with Scikit-learn. Preprocessing, feature engineering, and cross-validation techniques.",
     category: "IT/Coding",
     difficulty: "Intermediate",
-    format: "Video"
+    format: "Video",
   },
   {
     id: 8,
     title: "Git and Version Control",
-    description: "Master Git for version control. Branches, merges, rebasing, and collaborative workflows. GitHub and GitLab. Resolve conflicts and maintain clean project history.",
+    description:
+      "Master Git for version control. Branches, merges, rebasing, and collaborative workflows. GitHub and GitLab. Resolve conflicts and maintain clean project history.",
     category: "IT/Coding",
     difficulty: "Beginner",
-    format: "Reading"
+    format: "Reading",
   },
   {
     id: 9,
     title: "Docker and Containerization",
-    description: "Containerize applications with Docker. Images, containers, Dockerfile, docker-compose. Deploy and orchestrate microservices. DevOps fundamentals for developers.",
+    description:
+      "Containerize applications with Docker. Images, containers, Dockerfile, docker-compose. Deploy and orchestrate microservices. DevOps fundamentals for developers.",
     category: "IT/Coding",
     difficulty: "Intermediate",
-    format: "Video"
+    format: "Video",
   },
   {
     id: 10,
     title: "Data Structures and Algorithms in Python",
-    description: "Arrays, linked lists, stacks, queues, trees, graphs. Sorting and searching algorithms. Complexity analysis. Essential for technical interviews and efficient code.",
+    description:
+      "Arrays, linked lists, stacks, queues, trees, graphs. Sorting and searching algorithms. Complexity analysis. Essential for technical interviews and efficient code.",
     category: "IT/Coding",
     difficulty: "Intermediate",
-    format: "Reading"
+    format: "Reading",
   },
   {
     id: 11,
     title: "Cybersecurity Basics",
-    description: "Introduction to information security. Threats, encryption, authentication, and secure coding. OWASP Top 10 and common vulnerabilities. Protect applications and data.",
+    description:
+      "Introduction to information security. Threats, encryption, authentication, and secure coding. OWASP Top 10 and common vulnerabilities. Protect applications and data.",
     category: "IT/Coding",
     difficulty: "Beginner",
-    format: "Quiz"
+    format: "Quiz",
   },
   {
     id: 12,
     title: "Cloud Computing with AWS",
-    description: "Deploy and manage applications on Amazon Web Services. EC2, S3, Lambda, and core AWS services. Architecture for scalability, security, and cost optimization.",
+    description:
+      "Deploy and manage applications on Amazon Web Services. EC2, S3, Lambda, and core AWS services. Architecture for scalability, security, and cost optimization.",
     category: "IT/Coding",
     difficulty: "Advanced",
-    format: "Video"
+    format: "Video",
   },
   // === BUSINESS (13-22) ===
   {
     id: 13,
     title: "Introduction to Business Strategy",
-    description: "Foundations of strategic management. SWOT analysis, competitive advantage, and business model canvas. How organizations set goals and make long-term decisions.",
+    description:
+      "Foundations of strategic management. SWOT analysis, competitive advantage, and business model canvas. How organizations set goals and make long-term decisions.",
     category: "Business",
     difficulty: "Beginner",
-    format: "Reading"
+    format: "Reading",
   },
   {
     id: 14,
     title: "Financial Accounting Fundamentals",
-    description: "Read and interpret financial statements. Balance sheets, income statements, cash flow. Double-entry bookkeeping and accounting principles for non-accountants.",
+    description:
+      "Read and interpret financial statements. Balance sheets, income statements, cash flow. Double-entry bookkeeping and accounting principles for non-accountants.",
     category: "Business",
     difficulty: "Beginner",
-    format: "Video"
+    format: "Video",
   },
   {
     id: 15,
     title: "Digital Marketing and SEO",
-    description: "Drive traffic and conversions with digital marketing. SEO, content marketing, social media, and paid advertising. Analytics and conversion optimization strategies.",
+    description:
+      "Drive traffic and conversions with digital marketing. SEO, content marketing, social media, and paid advertising. Analytics and conversion optimization strategies.",
     category: "Business",
     difficulty: "Intermediate",
-    format: "Video"
+    format: "Video",
   },
   {
     id: 16,
     title: "Project Management with Agile and Scrum",
-    description: "Deliver projects using Agile and Scrum. Sprints, backlogs, stand-ups, and retrospectives. Roles, ceremonies, and tools. Practical guide for product and engineering teams.",
+    description:
+      "Deliver projects using Agile and Scrum. Sprints, backlogs, stand-ups, and retrospectives. Roles, ceremonies, and tools. Practical guide for product and engineering teams.",
     category: "Business",
     difficulty: "Intermediate",
-    format: "Reading"
+    format: "Reading",
   },
   {
     id: 17,
     title: "Leadership and Team Building",
-    description: "Lead teams effectively. Motivation, delegation, feedback, and conflict resolution. Build trust and foster collaboration. Skills for new and aspiring managers.",
+    description:
+      "Lead teams effectively. Motivation, delegation, feedback, and conflict resolution. Build trust and foster collaboration. Skills for new and aspiring managers.",
     category: "Business",
     difficulty: "Intermediate",
-    format: "Video"
+    format: "Video",
   },
   {
     id: 18,
     title: "Negotiation and Persuasion",
-    description: "Win-win negotiation techniques. Preparation, BATNA, and closing deals. Persuasion psychology and influence. Apply in sales, partnerships, and everyday situations.",
+    description:
+      "Win-win negotiation techniques. Preparation, BATNA, and closing deals. Persuasion psychology and influence. Apply in sales, partnerships, and everyday situations.",
     category: "Business",
     difficulty: "Intermediate",
-    format: "Reading"
+    format: "Reading",
   },
   {
     id: 19,
     title: "Startup Fundamentals and Lean Canvas",
-    description: "Validate ideas and build startups. Customer discovery, MVP, pivot. Lean startup methodology and business model innovation. From idea to first customers.",
+    description:
+      "Validate ideas and build startups. Customer discovery, MVP, pivot. Lean startup methodology and business model innovation. From idea to first customers.",
     category: "Business",
     difficulty: "Beginner",
-    format: "Quiz"
+    format: "Quiz",
   },
   {
     id: 20,
     title: "Data-Driven Decision Making",
-    description: "Use data to inform business decisions. KPIs, dashboards, A/B testing, and statistical reasoning. Avoid biases and interpret metrics correctly in business contexts.",
+    description:
+      "Use data to inform business decisions. KPIs, dashboards, A/B testing, and statistical reasoning. Avoid biases and interpret metrics correctly in business contexts.",
     category: "Business",
     difficulty: "Intermediate",
-    format: "Video"
+    format: "Video",
   },
   {
     id: 21,
     title: "Supply Chain and Operations",
-    description: "Manage supply chains and operations. Inventory, logistics, procurement, and process improvement. Lean and Six Sigma concepts. Efficiency and cost reduction.",
+    description:
+      "Manage supply chains and operations. Inventory, logistics, procurement, and process improvement. Lean and Six Sigma concepts. Efficiency and cost reduction.",
     category: "Business",
     difficulty: "Advanced",
-    format: "Reading"
+    format: "Reading",
   },
   {
     id: 22,
     title: "Corporate Finance and Valuation",
-    description: "Valuation methods, capital structure, and investment decisions. DCF, comparable analysis, and risk assessment. For finance professionals and executives.",
+    description:
+      "Valuation methods, capital structure, and investment decisions. DCF, comparable analysis, and risk assessment. For finance professionals and executives.",
     category: "Business",
     difficulty: "Advanced",
-    format: "Video"
+    format: "Video",
   },
   // === GRAPHIC DESIGN (23-31) ===
   {
     id: 23,
     title: "Adobe Photoshop for Beginners",
-    description: "Get started with Photoshop. Layers, masks, selections, and retouching. Create and edit images for web and print. Essential tools and workflows for designers.",
+    description:
+      "Get started with Photoshop. Layers, masks, selections, and retouching. Create and edit images for web and print. Essential tools and workflows for designers.",
     category: "Graphic Design",
     difficulty: "Beginner",
-    format: "Video"
+    format: "Video",
   },
   {
     id: 24,
     title: "Illustrator: Vector Graphics and Logo Design",
-    description: "Create vector graphics and logos in Adobe Illustrator. Pen tool, shapes, typography, and branding. Export for web, print, and animation.",
+    description:
+      "Create vector graphics and logos in Adobe Illustrator. Pen tool, shapes, typography, and branding. Export for web, print, and animation.",
     category: "Graphic Design",
     difficulty: "Beginner",
-    format: "Video"
+    format: "Video",
   },
   {
     id: 25,
     title: "UI/UX Design Principles",
-    description: "User-centered design. Wireframing, prototyping, and usability testing. Information architecture and visual hierarchy. Design for web and mobile applications.",
+    description:
+      "User-centered design. Wireframing, prototyping, and usability testing. Information architecture and visual hierarchy. Design for web and mobile applications.",
     category: "Graphic Design",
     difficulty: "Intermediate",
-    format: "Reading"
+    format: "Reading",
   },
   {
     id: 26,
     title: "Figma: Collaborative Interface Design",
-    description: "Design interfaces in Figma. Components, variants, and design systems. Collaboration and handoff to developers. Modern workflow for product design teams.",
+    description:
+      "Design interfaces in Figma. Components, variants, and design systems. Collaboration and handoff to developers. Modern workflow for product design teams.",
     category: "Graphic Design",
     difficulty: "Intermediate",
-    format: "Video"
+    format: "Video",
   },
   {
     id: 27,
     title: "Typography and Layout",
-    description: "Typography fundamentals: typefaces, hierarchy, spacing, and readability. Grid systems and layout for print and digital. Create professional documents and layouts.",
+    description:
+      "Typography fundamentals: typefaces, hierarchy, spacing, and readability. Grid systems and layout for print and digital. Create professional documents and layouts.",
     category: "Graphic Design",
     difficulty: "Intermediate",
-    format: "Reading"
+    format: "Reading",
   },
   {
     id: 28,
     title: "Color Theory and Brand Identity",
-    description: "Color psychology, palettes, and accessibility. Build brand identity with color and visual systems. Apply in logos, marketing materials, and digital products.",
+    description:
+      "Color psychology, palettes, and accessibility. Build brand identity with color and visual systems. Apply in logos, marketing materials, and digital products.",
     category: "Graphic Design",
     difficulty: "Beginner",
-    format: "Quiz"
+    format: "Quiz",
   },
   {
     id: 29,
     title: "Motion Graphics with After Effects",
-    description: "Animate graphics and create motion design in After Effects. Keyframes, effects, and compositing. Titles, explainers, and social media content.",
+    description:
+      "Animate graphics and create motion design in After Effects. Keyframes, effects, and compositing. Titles, explainers, and social media content.",
     category: "Graphic Design",
     difficulty: "Advanced",
-    format: "Video"
+    format: "Video",
   },
   {
     id: 30,
     title: "Design Thinking Workshop",
-    description: "Solve problems with design thinking. Empathize, define, ideate, prototype, test. Human-centered innovation for products and services. Workshop format with exercises.",
+    description:
+      "Solve problems with design thinking. Empathize, define, ideate, prototype, test. Human-centered innovation for products and services. Workshop format with exercises.",
     category: "Graphic Design",
     difficulty: "Intermediate",
-    format: "Reading"
+    format: "Reading",
   },
   {
     id: 31,
     title: "Portfolio and Presentation for Designers",
-    description: "Build a strong design portfolio. Present work effectively and tell your design story. Case studies and client presentations. Land jobs and freelance projects.",
+    description:
+      "Build a strong design portfolio. Present work effectively and tell your design story. Case studies and client presentations. Land jobs and freelance projects.",
     category: "Graphic Design",
     difficulty: "Intermediate",
-    format: "Video"
+    format: "Video",
   },
   // === MATHEMATICS (32-40) ===
   {
     id: 32,
     title: "Algebra and Equations",
-    description: "Linear equations, quadratics, systems, and inequalities. Algebraic manipulation and problem solving. Foundation for calculus and applied mathematics.",
+    description:
+      "Linear equations, quadratics, systems, and inequalities. Algebraic manipulation and problem solving. Foundation for calculus and applied mathematics.",
     category: "Mathematics",
     difficulty: "Beginner",
-    format: "Video"
+    format: "Video",
   },
   {
     id: 33,
     title: "Calculus I: Limits and Derivatives",
-    description: "Limits, continuity, and derivatives. Rules of differentiation and applications. Rates of change and optimization. First course in calculus for science and engineering.",
+    description:
+      "Limits, continuity, and derivatives. Rules of differentiation and applications. Rates of change and optimization. First course in calculus for science and engineering.",
     category: "Mathematics",
     difficulty: "Intermediate",
-    format: "Video"
+    format: "Video",
   },
   {
     id: 34,
     title: "Calculus II: Integration and Series",
-    description: "Definite and indefinite integrals, techniques of integration. Sequences and series, convergence. Applications to area, volume, and differential equations.",
+    description:
+      "Definite and indefinite integrals, techniques of integration. Sequences and series, convergence. Applications to area, volume, and differential equations.",
     category: "Mathematics",
     difficulty: "Advanced",
-    format: "Reading"
+    format: "Reading",
   },
   {
     id: 35,
     title: "Linear Algebra",
-    description: "Vectors, matrices, determinants, eigenvalues. Linear transformations and applications. Essential for machine learning, graphics, and engineering.",
+    description:
+      "Vectors, matrices, determinants, eigenvalues. Linear transformations and applications. Essential for machine learning, graphics, and engineering.",
     category: "Mathematics",
     difficulty: "Intermediate",
-    format: "Video"
+    format: "Video",
   },
   {
     id: 36,
     title: "Probability and Statistics",
-    description: "Probability rules, distributions, and statistical inference. Hypothesis testing, confidence intervals, regression. Data analysis and decision under uncertainty.",
+    description:
+      "Probability rules, distributions, and statistical inference. Hypothesis testing, confidence intervals, regression. Data analysis and decision under uncertainty.",
     category: "Mathematics",
     difficulty: "Intermediate",
-    format: "Reading"
+    format: "Reading",
   },
   {
     id: 37,
     title: "Discrete Mathematics",
-    description: "Logic, sets, combinatorics, and graph theory. Proof techniques and recursive structures. Foundation for computer science and algorithms.",
+    description:
+      "Logic, sets, combinatorics, and graph theory. Proof techniques and recursive structures. Foundation for computer science and algorithms.",
     category: "Mathematics",
     difficulty: "Intermediate",
-    format: "Reading"
+    format: "Reading",
   },
   {
     id: 38,
     title: "Numerical Methods",
-    description: "Numerical solutions for equations, integration, and differential equations. Error analysis and stability. Implement methods in code for scientific computing.",
+    description:
+      "Numerical solutions for equations, integration, and differential equations. Error analysis and stability. Implement methods in code for scientific computing.",
     category: "Mathematics",
     difficulty: "Advanced",
-    format: "Video"
+    format: "Video",
   },
   {
     id: 39,
     title: "Statistics for Data Science",
-    description: "Descriptive and inferential statistics for data science. Sampling, estimation, and A/B testing. Practical applications with real datasets and Python.",
+    description:
+      "Descriptive and inferential statistics for data science. Sampling, estimation, and A/B testing. Practical applications with real datasets and Python.",
     category: "Mathematics",
     difficulty: "Intermediate",
-    format: "Quiz"
+    format: "Quiz",
   },
   {
     id: 40,
     title: "Mathematical Logic and Proofs",
-    description: "Propositional and predicate logic. Proof strategies: direct, contradiction, induction. Rigorous reasoning for mathematics and computer science.",
+    description:
+      "Propositional and predicate logic. Proof strategies: direct, contradiction, induction. Rigorous reasoning for mathematics and computer science.",
     category: "Mathematics",
     difficulty: "Advanced",
-    format: "Reading"
+    format: "Reading",
   },
   // === SOFT SKILLS (41-50) ===
   {
     id: 41,
     title: "Effective Communication at Work",
-    description: "Communicate clearly in meetings, emails, and presentations. Active listening, feedback, and cross-cultural communication. Build rapport and avoid misunderstandings.",
+    description:
+      "Communicate clearly in meetings, emails, and presentations. Active listening, feedback, and cross-cultural communication. Build rapport and avoid misunderstandings.",
     category: "Soft Skills",
     difficulty: "Beginner",
-    format: "Video"
+    format: "Video",
   },
   {
     id: 42,
     title: "Time Management and Productivity",
-    description: "Prioritize tasks, beat procrastination, and manage deadlines. Techniques like Eisenhower matrix and Pomodoro. Balance focus and flexibility in work and study.",
+    description:
+      "Prioritize tasks, beat procrastination, and manage deadlines. Techniques like Eisenhower matrix and Pomodoro. Balance focus and flexibility in work and study.",
     category: "Soft Skills",
     difficulty: "Beginner",
-    format: "Reading"
+    format: "Reading",
   },
   {
     id: 43,
     title: "Critical Thinking and Problem Solving",
-    description: "Analyze arguments, identify assumptions, and evaluate evidence. Structured problem-solving frameworks. Make better decisions in complex situations.",
+    description:
+      "Analyze arguments, identify assumptions, and evaluate evidence. Structured problem-solving frameworks. Make better decisions in complex situations.",
     category: "Soft Skills",
     difficulty: "Intermediate",
-    format: "Quiz"
+    format: "Quiz",
   },
   {
     id: 44,
     title: "Emotional Intelligence",
-    description: "Self-awareness, self-regulation, and empathy. Manage emotions and build strong relationships. Apply EQ in leadership and teamwork.",
+    description:
+      "Self-awareness, self-regulation, and empathy. Manage emotions and build strong relationships. Apply EQ in leadership and teamwork.",
     category: "Soft Skills",
     difficulty: "Intermediate",
-    format: "Video"
+    format: "Video",
   },
   {
     id: 45,
     title: "Public Speaking and Presentations",
-    description: "Deliver confident presentations. Structure, storytelling, and handling Q&A. Overcome anxiety and engage your audience. Practice with feedback.",
+    description:
+      "Deliver confident presentations. Structure, storytelling, and handling Q&A. Overcome anxiety and engage your audience. Practice with feedback.",
     category: "Soft Skills",
     difficulty: "Intermediate",
-    format: "Video"
+    format: "Video",
   },
   {
     id: 46,
     title: "Remote Work and Collaboration",
-    description: "Thrive in remote and hybrid teams. Tools, rituals, and communication. Async work and time zones. Maintain productivity and well-being.",
+    description:
+      "Thrive in remote and hybrid teams. Tools, rituals, and communication. Async work and time zones. Maintain productivity and well-being.",
     category: "Soft Skills",
     difficulty: "Beginner",
-    format: "Reading"
+    format: "Reading",
   },
   {
     id: 47,
     title: "Conflict Resolution",
-    description: "Resolve conflicts constructively. Mediation techniques and difficult conversations. Turn disagreements into opportunities for growth and collaboration.",
+    description:
+      "Resolve conflicts constructively. Mediation techniques and difficult conversations. Turn disagreements into opportunities for growth and collaboration.",
     category: "Soft Skills",
     difficulty: "Intermediate",
-    format: "Reading"
+    format: "Reading",
   },
   {
     id: 48,
     title: "Growth Mindset and Resilience",
-    description: "Develop a growth mindset and bounce back from setbacks. Embrace challenges and learn from failure. Build resilience for long-term success.",
+    description:
+      "Develop a growth mindset and bounce back from setbacks. Embrace challenges and learn from failure. Build resilience for long-term success.",
     category: "Soft Skills",
     difficulty: "Beginner",
-    format: "Quiz"
+    format: "Quiz",
   },
   {
     id: 49,
     title: "Networking and Professional Relationships",
-    description: "Build and maintain a professional network. Networking events, LinkedIn, and follow-up. Give and receive value in relationships. Career development through connections.",
+    description:
+      "Build and maintain a professional network. Networking events, LinkedIn, and follow-up. Give and receive value in relationships. Career development through connections.",
     category: "Soft Skills",
     difficulty: "Intermediate",
-    format: "Video"
+    format: "Video",
   },
   {
     id: 50,
     title: "Giving and Receiving Feedback",
-    description: "Deliver constructive feedback and receive it well. SBI model and nonviolent communication. Create a feedback culture in teams. Improve performance and relationships.",
+    description:
+      "Deliver constructive feedback and receive it well. SBI model and nonviolent communication. Create a feedback culture in teams. Improve performance and relationships.",
     category: "Soft Skills",
     difficulty: "Intermediate",
-    format: "Reading"
-  }
+    format: "Reading",
+  },
 ];
 
 const users = [
   { id: 1, name: "Alex Chen", profile: "Coding enthusiast, prefers Video format, likes IT and Math" },
-  { id: 2, name: "Sam Johnson", profile: "Business professional, prefers Reading, focuses on Business and Soft Skills" },
+  {
+    id: 2,
+    name: "Sam Johnson",
+    profile: "Business professional, prefers Reading, focuses on Business and Soft Skills",
+  },
   { id: 3, name: "Jordan Lee", profile: "Designer, prefers Video, loves Graphic Design and creative courses" },
   { id: 4, name: "Morgan Taylor", profile: "Mixed learner, enjoys Video and Quiz, broad interest across domains" },
   { id: 5, name: "Casey Brown", profile: "Tech lead, prefers Reading and Video, IT and Business" },
@@ -431,11 +485,9 @@ const users = [
   { id: 17, name: "Morgan Kim", profile: "DevOps engineer, Video, IT/Coding and Business" },
   { id: 18, name: "Jordan Park", profile: "Content creator, Video and Quiz, Graphic Design and Soft Skills" },
   { id: 19, name: "Taylor Bell", profile: "Consultant, Reading and Video, Business and Mathematics" },
-  { id: 20, name: "Riley Cooper", profile: "Career switcher, mixed, exploring IT and Business" }
+  { id: 20, name: "Riley Cooper", profile: "Career switcher, mixed, exploring IT and Business" },
 ];
 
-// xAPI-style interaction logs. Patterns: coding users rate IT high, business users rate Business high,
-// design users rate Graphic Design high; overlapping tastes create collaborative signals for SVD.
 const interactions = [
   { userId: 1, courseId: 1, rating: 5, status: "completed" },
   { userId: 1, courseId: 2, rating: 5, status: "completed" },
@@ -790,11 +842,11 @@ const interactions = [
   { userId: 17, courseId: 43, rating: 4, status: "completed" },
   { userId: 18, courseId: 49, rating: 4, status: "completed" },
   { userId: 19, courseId: 47, rating: 4, status: "completed" },
-  { userId: 20, courseId: 47, rating: 4, status: "completed" }
+  { userId: 20, courseId: 47, rating: 4, status: "completed" },
 ];
 
 module.exports = {
   courses,
   users,
-  interactions
+  interactions,
 };

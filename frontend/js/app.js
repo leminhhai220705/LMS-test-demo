@@ -1,7 +1,7 @@
 /**
  * LMS Student Experience — Onboarding flow + interactive dashboard.
  * Step 1: Onboarding questionnaire → AI recommendations (0.8 CB + 0.2 CF).
- * Step 2: Dashboard with Simulate Complete → updates to 0.7 CF + 0.3 CB.
+ * Step 2: Dashboard with Simulate Complete → updates to 0.5 CF + 0.5 CB.
  */
 
 const API_BASE = window.APP_API_BASE_URL || "";
@@ -134,10 +134,8 @@ function applyDashboardData(data) {
   heroProfile.textContent = data.user?.profile ?? "";
   userBadge.textContent = data.user?.name ?? "Student";
   userBadge.classList.remove("hidden");
-
   const dqn = data.dqn_suggestion;
   dqnMessage.textContent = dqn?.message ?? "No suggestion available.";
-
   renderCompleted(data.completedCourses ?? []);
   renderRecommendations(data.recommendations ?? [], simulateComplete);
 }
@@ -174,7 +172,6 @@ async function submitOnboarding(e) {
     btnDiscover.disabled = false;
   }
 }
-
 async function simulateComplete(courseId, btn) {
   if (!btn || !STUDENT_ID) return;
   btn.disabled = true;
